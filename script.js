@@ -10,11 +10,12 @@ var scoreButton = document.querySelector("#display-score");
 // variables for personal score portion
 var page3 = document.querySelector("#score");
 var recordScores = document.querySelector("#document-score");
-var intials = document.querySelector("#intials");
+var userIntials = document.querySelector("#intials");
+var extraTime =document.querySelector("#time-leftover")
 var score = document.querySelector("#quiz-results");
 //variables for high score portion
 var page4 = document.querySelector("#high-scores");
-var scoreList = document.querySelector("#initials-list");
+var scoreList = document.querySelector("#intials-list");
 var restartButton = document.querySelector("#restart");
 //question variables
 var problem = document.querySelector("#question");
@@ -33,53 +34,57 @@ var quiz = [
         correct: "D"
     },
     {
-        question: "2",
-        choiceA: "",
-        choiceB: "",
-        choiceC: "",
-        choiceD: "",
-        correct: ""
+        question: "What does Math.random() do?",
+        choiceA: "picks a random number between 0 and infinity",
+        choiceB: "picks a random number between 0 and 1",
+        choiceC: "picks a random number between 0 and 100",
+        choiceD: "picks a random negative number",
+        correct: "B"
     },
     {
-        question: "3",
-        choiceA: "",
-        choiceB: "",
-        choiceC: "",
-        choiceD: "",
-        correct: ""
+        question: "What does event.stopPropagation do?",
+        choiceA: "stops political progpaganda",
+        choiceB: "stops all event function",
+        choiceC: "prevents events, such as click and keydown from bubbling and activating other events in the DOM.",
+        choiceD: "causes bubbling to create a chain reaction from a single click event",
+        correct: "C"
     },
     {
-        question: "4",
-        choiceA: "",
-        choiceB: "",
-        choiceC: "",
-        choiceD: "",
-        correct: ""
+        question: "What is NOT a git command?",
+        choiceA: "git pull",
+        choiceB: "git branch",
+        choiceC: "git return",
+        choiceD: "git commit",
+        correct: "C"
     },
     {
-        question: "5",
-        choiceA: "",
-        choiceB: "",
-        choiceC: "",
-        choiceD: "",
-        correct: ""
+        question: "Bootstrap's grid system has what three classes?",
+        choiceA: "container, row, column",
+        choiceB: "box, position-y, position-x",
+        choiceC: "container, section, box",
+        choiceD: "bodu, row, column",
+        correct: "A"
     },
 ];
 var answer = "";
 console.log(answer);
 var seconds = 60;
 var correct = 0; 
+var currentquestion = 0;
 
 startButton.addEventListener("click", function(){
     page1.setAttribute("style", "display:none");
     console.log(page1);
     page2.setAttribute("style", "display:block");
-    countdown()
+    correct = 0;
+    currentquestion = 0;
+    displayQuestion();
+    countdown();
 });
 
 function countdown(){
     seconds = 60;
-    var timerInterval =setInterval(function(){
+    timerInterval =setInterval(function(){
     seconds--;
     clock.textContent = seconds;
     console.log(seconds);
@@ -92,40 +97,35 @@ function countdown(){
   }, 1000);
 }
 
-var currentquestion = 0;
-
-console.log(quiz[currentquestion]);
-displayQuestion();
-
 optionA.addEventListener("click", function(){
     answer = "A";
     console.log(answer);
     answerCheck();
     currentquestion++
-    displayQuestion();
+    setTimeout (function(){ displayQuestion();}, 500);
 })
 optionB.addEventListener("click", function(){
     answer = "B";
     answerCheck();
     currentquestion++
-    displayQuestion();
+    setTimeout (function(){ displayQuestion();}, 500);
 })
 optionC.addEventListener("click", function(){
     answer = "C";
     answerCheck()
     currentquestion++
-    displayQuestion();
+    setTimeout (function(){ displayQuestion();}, 500);
 })
 optionD.addEventListener("click", function(){
     answer = "D";
     answerCheck();
     currentquestion++
-    displayQuestion();
+    setTimeout (function(){ displayQuestion();}, 500);
 })
-quizOver();
 
 function displayQuestion(){
     console.log(quiz[currentquestion]);
+    quizOver();
     result.textContent = "";
     problem.textContent = quiz[currentquestion].question;
     optionA.textContent = quiz[currentquestion].choiceA;
@@ -139,20 +139,23 @@ function answerCheck(){
     if (quiz[currentquestion].correct === answer){
         result.textContent = "correct";
         correct++;
+        console.log(correct);
     }
     else{
         result.textContent = "wrong";
-        seconds - 5;
+        seconds = seconds - 4;
     }
 }
 
 
 function quizOver(){
     if(currentquestion>quiz.length-1){
+        clearInterval(timerInterval);
         page2.setAttribute("style", "display:none");
         console.log(page2);
         page3.setAttribute("style", "display:block");
-        score = correct+"/5";
+        score.textContent = correct+"/5";
+        extraTime.textContent = seconds + " " + "seconds leftover";
     }
 }
 
@@ -166,9 +169,11 @@ recordScores.addEventListener("click", function(){
     page3.setAttribute("style", "display:none");
     console.log(page3);
     page4.setAttribute("style", "display:block");
-    var list = document.createElement("li");
-    list.innerText = intials;
-    scoreList.append(list);
+    var li = document.createElement("li");
+    var name = userIntials.value;
+    li.innerHTML = name + " " + correct+"/5";
+    console.log(li);
+    scoreList.append(li);
 })
 
 restartButton.addEventListener("click", function(){
