@@ -11,6 +11,7 @@ var scoreButton = document.querySelector("#display-score");
 var page3 = document.querySelector("#score");
 var recordScores = document.querySelector("#document-score");
 var intials = document.querySelector("#intials");
+var score = document.querySelector("#quiz-results");
 //variables for high score portion
 var page4 = document.querySelector("#high-scores");
 var scoreList = document.querySelector("#initials-list");
@@ -32,7 +33,7 @@ var quiz = [
         correct: "D"
     },
     {
-        question: "",
+        question: "2",
         choiceA: "",
         choiceB: "",
         choiceC: "",
@@ -40,7 +41,7 @@ var quiz = [
         correct: ""
     },
     {
-        question: "",
+        question: "3",
         choiceA: "",
         choiceB: "",
         choiceC: "",
@@ -48,7 +49,7 @@ var quiz = [
         correct: ""
     },
     {
-        question: "",
+        question: "4",
         choiceA: "",
         choiceB: "",
         choiceC: "",
@@ -56,7 +57,7 @@ var quiz = [
         correct: ""
     },
     {
-        question: "",
+        question: "5",
         choiceA: "",
         choiceB: "",
         choiceC: "",
@@ -67,6 +68,7 @@ var quiz = [
 var answer = "";
 console.log(answer);
 var seconds = 60;
+var correct = 0; 
 
 startButton.addEventListener("click", function(){
     page1.setAttribute("style", "display:none");
@@ -76,7 +78,7 @@ startButton.addEventListener("click", function(){
 });
 
 function countdown(){
-    seconds = 30;
+    seconds = 60;
     var timerInterval =setInterval(function(){
     seconds--;
     clock.textContent = seconds;
@@ -91,38 +93,52 @@ function countdown(){
 }
 
 var currentquestion = 0;
-var q = quiz[currentquestion];
-console.log(currentquestion);
 
-for(i=0; i<quiz.length; i++){
-    result.textContent = "";
-    displayQuestion();
-    console.log(page2);
-    currentquestion++
-}
+console.log(quiz[currentquestion]);
+displayQuestion();
 
 optionA.addEventListener("click", function(){
     answer = "A";
     console.log(answer);
     answerCheck();
+    currentquestion++
+    displayQuestion();
 })
 optionB.addEventListener("click", function(){
     answer = "B";
     answerCheck();
+    currentquestion++
+    displayQuestion();
 })
 optionC.addEventListener("click", function(){
     answer = "C";
     answerCheck()
+    currentquestion++
+    displayQuestion();
 })
 optionD.addEventListener("click", function(){
     answer = "D";
     answerCheck();
+    currentquestion++
+    displayQuestion();
 })
+quizOver();
+
+function displayQuestion(){
+    console.log(quiz[currentquestion]);
+    result.textContent = "";
+    problem.textContent = quiz[currentquestion].question;
+    optionA.textContent = quiz[currentquestion].choiceA;
+    optionB.textContent = quiz[currentquestion].choiceB;
+    optionC.textContent = quiz[currentquestion].choiceC;
+    optionD.textContent = quiz[currentquestion].choiceD;
+}
 
 function answerCheck(){
     console.log(answer);
-    if (q.correct === answer){
+    if (quiz[currentquestion].correct === answer){
         result.textContent = "correct";
+        correct++;
     }
     else{
         result.textContent = "wrong";
@@ -130,15 +146,15 @@ function answerCheck(){
     }
 }
 
-function displayQuestion(){
-    result.textContent = "";
-    problem.textContent = q.question;
-    optionA.textContent = q.choiceA;
-    optionB.textContent = q.choiceB;
-    optionC.textContent = q.choiceC;
-    optionD.textContent = q.choiceD;
-}
 
+function quizOver(){
+    if(currentquestion>quiz.length-1){
+        page2.setAttribute("style", "display:none");
+        console.log(page2);
+        page3.setAttribute("style", "display:block");
+        score = correct+"/5";
+    }
+}
 
 scoreButton.addEventListener("click", function(){
     timedOut.setAttribute("style", "display:none");
