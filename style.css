@@ -1,22 +1,32 @@
 body{
     background-image: url(https://ak.picdn.net/shutterstock/videos/1012349138/thumb/1.jpg);
     background-repeat: repeat-y;
-    background-size:cover ;
+    background-size:cover;
     margin: 300px;
     margin-top: 125px;
     text-align:center;
     color:white;
+    font-size:24px;
 }
-
-/*{
-    height:425px;
-    padding:75px;
-    margin:25px;
-    background-color:white;
-}*/
 .quiz{
     display:none;
 }
 #start-page{
     display:block;
+}
+#multiple-choice{
+    text-align: left;
+}
+ul{
+    list-style-type: none;
+}
+li{
+    margin:20px;
+}
+#timer{
+    text-align: center;
+    font-size: 40px;
+}
+#result-message{
+    text-align: center;
 }

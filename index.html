@@ -2,30 +2,38 @@
 <html>
     <head>
         <title>Coding Quiz!</title>
-        <link rel="stylesheet" href="style.css">
+        <!---css bootstrap-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <!--javascript bootstrap-->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
        <section class="quiz" id="start-page">
            <h1>Coding Quiz!</h1>
-           <p>You will have 1 minute to answer 5 simple coding questions.<br>Hit start when ready.</p>
-           <button id="start-quiz">Start</button>
+           <p>You will have 60 seconds to answer 5 simple coding questions.<br>Hit start when ready.</p>
+           <button type="button" class="btn btn-outline-secondary btn-lg" id="start-quiz">Start</button>
        </section> 
 
        <div class="quiz" id="multiple-choice">
            <p id="timer"></p>
-           <p id="question"></p>
-           <button id="choice-a"></button>
-           <button id="choice-b"></button>
-           <button id="choice-c"></button>
-           <button id="choice-d"></button>
            <p id="result-message"></p>
+           <p id="question"></p>
+           <ul>
+            <li><button type="button" class="btn btn-outline-secondary" id="choice-a"></button></li>
+            <li><button type="button" class="btn btn-outline-secondary" id="choice-b"></button></li>
+            <li><button type="button" class="btn btn-outline-secondary" id="choice-c"></button></li>
+            <li><button type="button" class="btn btn-outline-secondary" id="choice-d"></button></li>
+           </ul>
        </div>
 
        <section class="quiz"  id="times-up">
            <h1>Time's Up!</h1>
            <p>You ran out of time.</p>
-           <button id="display-score">Score</button>
+           <button type="button" class="btn btn-outline-secondary btn-lg" id="display-score">Score</button>
        </section>
 
        <section class="quiz" id="score">
@@ -33,7 +41,7 @@
             <p id="quiz-results"></p>
             <p id="time-leftover"></p>
             <input placeholder="intials here" id="intials"></input>
-            <button id="document-score">Sumbit</button>
+            <button type="button" class="btn btn-outline-secondary btn-lg" id="document-score">Sumbit</button>
        </section>
 
        <section class="quiz" id="high-scores">
@@ -41,7 +49,7 @@
             <ul id="intials-list">
 
             </ul>
-            <button id="restart">Start Over</button>
+            <button type="button" class="btn btn-outline-secondary btn-lg" id="restart">Start Over</button>
        </section>
        <script src="./script.js"></script>
     </body>

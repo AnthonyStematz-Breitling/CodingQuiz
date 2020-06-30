@@ -62,13 +62,13 @@ var quiz = [
         choiceA: "container, row, column",
         choiceB: "box, position-y, position-x",
         choiceC: "container, section, box",
-        choiceD: "bodu, row, column",
+        choiceD: "body, row, column",
         correct: "A"
     },
 ];
 var answer = "";
 console.log(answer);
-var seconds = 60;
+var seconds = 61;
 var correct = 0; 
 var currentquestion = 0;
 
@@ -78,8 +78,8 @@ startButton.addEventListener("click", function(){
     page2.setAttribute("style", "display:block");
     correct = 0;
     currentquestion = 0;
-    displayQuestion();
     countdown();
+    displayQuestion();
 });
 
 function countdown(){
@@ -102,25 +102,25 @@ optionA.addEventListener("click", function(){
     console.log(answer);
     answerCheck();
     currentquestion++
-    setTimeout (function(){ displayQuestion();}, 500);
+    setTimeout (function(){ displayQuestion();}, 750);
 })
 optionB.addEventListener("click", function(){
     answer = "B";
     answerCheck();
     currentquestion++
-    setTimeout (function(){ displayQuestion();}, 500);
+    setTimeout (function(){ displayQuestion();}, 750);
 })
 optionC.addEventListener("click", function(){
     answer = "C";
     answerCheck()
     currentquestion++
-    setTimeout (function(){ displayQuestion();}, 500);
+    setTimeout (function(){ displayQuestion();}, 750);
 })
 optionD.addEventListener("click", function(){
     answer = "D";
     answerCheck();
     currentquestion++
-    setTimeout (function(){ displayQuestion();}, 500);
+    setTimeout (function(){ displayQuestion();}, 750);
 })
 
 function displayQuestion(){
@@ -137,12 +137,12 @@ function displayQuestion(){
 function answerCheck(){
     console.log(answer);
     if (quiz[currentquestion].correct === answer){
-        result.textContent = "correct";
+        result.textContent = "Correct!";
         correct++;
         console.log(correct);
     }
     else{
-        result.textContent = "wrong";
+        result.textContent = "Wrong!";
         seconds = seconds - 4;
     }
 }
