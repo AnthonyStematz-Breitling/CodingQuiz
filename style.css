@@ -1,0 +1,22 @@
+body{
+    background-image: url(https://ak.picdn.net/shutterstock/videos/1012349138/thumb/1.jpg);
+    background-repeat: repeat-y;
+    background-size:cover ;
+    margin: 300px;
+    margin-top: 125px;
+    text-align:center;
+    color:white;
+}
+
+/*{
+    height:425px;
+    padding:75px;
+    margin:25px;
+    background-color:white;
+}*/
+.quiz{
+    display:none;
+}
+#start-page{
+    display:block;
+}

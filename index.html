@@ -3,38 +3,43 @@
     <head>
         <title>Coding Quiz!</title>
         <link rel="stylesheet" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-       <section class="pop-up">
+       <section class="quiz" id="start-page">
            <h1>Coding Quiz!</h1>
            <p>You will have 30 seconds to answer 5 simple coding questions.<br>Hit start when ready.</p>
-           <button>Start</button>
+           <button id="start-quiz">Start</button>
        </section> 
 
-       <div class="pop-up" id="questions">
-           <p></p>
-           <button></button>
-           <button></button>
-           <button></button>
-           <button></button>
-           <p></p>
+       <div class="quiz" id="multiple-choice">
+           <p id="timer"></p>
+           <p id="question"></p>
+           <button id="choice-a"></button>
+           <button id="choice-b"></button>
+           <button id="choice-c"></button>
+           <button id="choice-d"></button>
+           <p id="result-message"></p>
        </div>
 
-       <section class="pop-up"  id="times-up">
-           <h1>TIme's Up!</h1>
-           <p>You ran out of time</p>
-           <button>Score</button>
+       <section class="quiz"  id="times-up">
+           <h1>Time's Up!</h1>
+           <p>You ran out of time.</p>
+           <button id="display-score">Score</button>
        </section>
 
-       <section class="pop-up" id="score">
-            <p></p>
-            <p></p>
+       <section class="quiz" id="score">
+            <h1>Score</h1>
+            <p id="quiz-results"></p>
+            <p id="time-left-ocer"></p>
+            <input id="intials"></input>
+            <button id="document-score">Sumbit</button>
        </section>
 
-       <section class="pop-up" id="high-scores">
+       <section class="quiz" id="high-scores">
             <h1>High Scores</h1>
             <ul></ul>
-            <button>Start Over</button>
+            <button id="restart">Start Over</button>
        </section>
     </body>
 </html>
