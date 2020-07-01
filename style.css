@@ -30,3 +30,12 @@ li{
 #result-message{
     text-align: center;
 }
+@media screen and (max-width: 768px){
+    body{
+        margin:0px;
+    }
+    button{
+        background-color: rgb(74, 74, 74);
+        color:white;
+    }
+}

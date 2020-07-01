@@ -23,7 +23,7 @@ var optionA = document.querySelector("#choice-a");
 var optionB = document.querySelector("#choice-b");
 var optionC = document.querySelector("#choice-c");
 var optionD = document.querySelector("#choice-d");
-var result = document.querySelector("#result-message")
+var result = document.querySelector("#result-message");
 var quiz = [
     {
         question: "Select the correct syntax below...",
@@ -71,6 +71,7 @@ console.log(answer);
 var seconds = 61;
 var correct = 0; 
 var currentquestion = 0;
+var timerInterval;
 
 startButton.addEventListener("click", function(){
     page1.setAttribute("style", "display:none");
@@ -84,7 +85,7 @@ startButton.addEventListener("click", function(){
 
 function countdown(){
     seconds = 60;
-    timerInterval =setInterval(function(){
+    timerInterval = setInterval(function(){
     seconds--;
     clock.textContent = seconds;
     console.log(seconds);
